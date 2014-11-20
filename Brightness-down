@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+BRIGHTNESS_FILE="/sys/devices/pci0000:00/0000:00:02.0/drm/card1/card1-eDP-1/intel_backlight/brightness"
+
+old=$(< $BRIGHTNESS_FILE)
+new=$(($old-200))
+if [[ "$new" -gt 99 ]] && [[ "$new" -lt 801 ]]
+    then echo $new > $BRIGHTNESS_FILE
+fi
