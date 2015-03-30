@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-BRIGHTNESS_FILE="/sys/devices/pci0000:00/0000:00:02.0/drm/card1/card1-eDP-1/intel_backlight/brightness"
+set -a
+BRIGHTNESS_FILE=`find /sys/devices/pci0000:00/ | grep intel_backlight/brightness`
+
 
 old=$(< $BRIGHTNESS_FILE)
 new=$(($old+200))
